@@ -1,5 +1,7 @@
 #pragma once
 
 // 
-#define LED_PIN 14      // 控制灯的 GPIO
-#define NUM_LEDS 12     // 你的板子上有 12 个 LED
+#define LED_PIN 14      // GPIO to control the light
+#define NUM_LEDS 12     // Number of LEDs in the strip
+#define I2C_SDA_PIN  16    // GPIO for I2C SDA
+#define I2C_SCL_PIN  17    // GPIO for I2C SCL
