@@ -26,6 +26,28 @@ if(CrossCompiling)
     
     # Initialise the Raspberry Pi Pico SDK
     pico_sdk_init()
+    # Set up CMSIS-DSP
+set(CMSISCORE "${CMAKE_CURRENT_LIST_DIR}/lib/CMSIS_5/CMSIS/Core")
+
+set(BASICMATH ON)
+set(COMPLEXMATH ON)
+set(CONTROLLER OFF)
+set(FASTMATH OFF)
+set(FILTERING OFF)
+set(MATRIX OFF)
+set(STATISTICS OFF)
+set(SUPPORT OFF)
+set(TRANSFORM ON)
+set(SVM OFF)
+set(BAYES OFF)
+set(DISTANCE OFF)
+set(INTERPOLATION OFF)
+set(QUATERNIONMATH OFF)
+set(CONFIGTABLE ON)
+set(RFFT_Q15_1024 ON)
+
+add_subdirectory(lib/CMSIS-DSP/Source bin_dsp)
+
 
     add_executable(labs)
     target_sources(labs 
@@ -34,6 +56,7 @@ if(CrossCompiling)
         src/drivers/logging/logging.cpp
         src/drivers/leds.cpp
         src/drivers/lis3dh.cpp
+        src/drivers/microphone.cpp
         src/tasks/accelerometer.cpp
     )
     target_include_directories(labs
@@ -64,6 +87,9 @@ if(CrossCompiling)
         hardware_watchdog
         hardware_clocks
         hardware_pwm
+        hardware_adc
+        CMSISDSP
+
     )
 
     pico_add_extra_outputs(labs)
