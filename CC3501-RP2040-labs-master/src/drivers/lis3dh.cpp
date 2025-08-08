@@ -57,13 +57,13 @@ void lis3dh_read_raw_xyz(int16_t* x, int16_t* y, int16_t* z) {
 
     // Combine the low and high bytes, and right shift by 4 to get the 12-bit value
 
-    *x = (int16_t)((buffer[1] << 8) | buffer[0]) >> 4;
-    *y = (int16_t)((buffer[3] << 8) | buffer[2]) >> 4;
-    *z = (int16_t)((buffer[5] << 8) | buffer[4]) >> 4;
+    *x = (int16_t)((buffer[1] << 8) | buffer[0]);
+    *y = (int16_t)((buffer[3] << 8) | buffer[2]);
+    *z = (int16_t)((buffer[5] << 8) | buffer[4]) ;
 }
 
 
 float convert_raw_to_g(int16_t raw_value) {
-    // Sensitivity in ±2g mode is 0.001 g/LSB
-    return raw_value * 0.001f;
+    // Sensitivity in ±2g mode 
+    return raw_value/16384.0;
 }
