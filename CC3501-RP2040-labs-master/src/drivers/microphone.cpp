@@ -32,8 +32,6 @@ void microphone_init() {
     
     adc_run(false); // Stop sampling
     
-    // Clear FIFO to avoid mixing old samples later
-    while (adc_fifo_get_level() > 0) {
-    adc_fifo_get();
-    }
+   // Clear FIFO to avoid mixing old samples later
+   adc_fifo_drain();
     }
