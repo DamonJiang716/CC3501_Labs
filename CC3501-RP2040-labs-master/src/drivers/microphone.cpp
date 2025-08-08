@@ -7,7 +7,7 @@
 void microphone_init() {
     adc_init(); // Initialize ADC module
     adc_gpio_init(MIC_ADC_PIN); // ADC0 → GPIO26 → Microphone analog output
-    adc_select_input(0); // Select channel 0 (connect microphone)
+    adc_select_input(ADC_INPUT); // Select channel 0 (connect microphone)
     
     // Set sampling frequency to 44.1kHz:
     // clkdiv = (48e6 / 44100) - 1 ≈ 1087.43
